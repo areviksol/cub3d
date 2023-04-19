@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_map.c                                          :+:      :+:    :+:   */
+/*   ft_trim.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rkochary <rkochary@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/13 17:11:06 by rkochary          #+#    #+#             */
-/*   Updated: 2023/04/13 17:11:12 by rkochary         ###   ########.fr       */
+/*   Created: 2023/04/13 15:44:33 by rkochary          #+#    #+#             */
+/*   Updated: 2023/04/16 18:03:22 by rkochary         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub.h"
+#include "../cub.h"
 
-static void	throwmessage(void)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	perror("Error");
-	exit(1);
-}
+	size_t	i;
 
-int	getheightofmap(char **map)
-{
-	int	i;
-
-	i = 0;
-	while (map[i] != NULL)
-		i++;
-	return (i);
-}
-
-void	helper(int cond)
-{
-	if (cond)
-		throwmessage();
+	if (!s1)
+		return (0);
+	while (*s1 && ft_strchr(set, *s1))
+		s1++;
+	i = ft_strlen(s1);
+	while (i && ft_strchr(set, s1[i]))
+		i--;
+	return (ft_substr(s1, 0, i + 1));
 }

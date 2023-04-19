@@ -6,7 +6,7 @@
 /*   By: rkochary <rkochary@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 15:53:01 by aremkrtc          #+#    #+#             */
-/*   Updated: 2023/04/12 18:46:43 by rkochary         ###   ########.fr       */
+/*   Updated: 2023/04/14 14:54:25 by rkochary         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,12 @@ char	*malloc_strings(char *s, char c)
 	i = 0;
 	while (s[i] && s[i] != c)
 		i++;
+
 	word = (char *)malloc(sizeof(char) * (i + 1));
 	if (!word)
+	{
 		return (NULL);
+	}
 	i = 0;
 	while (s[i] && s[i] != c)
 	{
@@ -71,7 +74,9 @@ char	**split_loop(char *s, char c, int i, int words)
 
 	tab = (char **)malloc(sizeof(char *) * (words + 1));
 	if (!tab)
+	{
 		return (NULL);
+	}
 	while (*s)
 	{
 		while (*s && *s == c)

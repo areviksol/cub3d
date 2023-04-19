@@ -12,15 +12,125 @@
 #include <ctype.h>
 #include "get_next_line.h"
 #include <unistd.h>
+# include <math.h>
+// *****************************************
+
+# define WIDTH			2040
+# define HEIGHT			1000
+
+# define ROTATE_SPEED	0.15
+# define MOVE_SPEED		0.2
+
+# define RIGHT			124
+# define LEFT			123
+# define ESC			53
+# define A				0
+# define S				1
+# define D				2
+# define W				13
+
+# define BUFFER_SIZE2 10
+
+
+typedef struct s_index
+{
+	int	index_no;
+	int	index_so;
+	int	index_ea;
+	int	index_we;
+	int	index_c;
+	int	index_f;
+}				t_index;
+
+typedef struct s_img
+{
+	void	*ptr;
+	char	*img;
+	int		bpp;
+	int		width;
+	int		height;
+	int		size_line;
+	int		endian;
+}				t_img;
+
+typedef struct s_game
+{
+	int		f_color;
+	int		c_color;
+	int		index;
+	void	*mlx;
+	void	*win;
+	void	*no;
+	void	*so;
+	void	*ea;
+	void	*we;
+	int		x;
+	int		y;
+}				t_game;
+
+typedef struct s_raycasting
+{
+	double	perpwalldist;
+	double	deltadistx;
+	double	deltadisty;
+	double	sidedistx;
+	double	sidedisty;
+	double	camerax;
+	double	raydiry;
+	double	raydirx;
+	double	planex;
+	double	planey;
+	double	posx;
+	double	posy;
+	double	dirx;
+	double	diry;
+	int		lineheight;
+	int		drawstart;
+	int		drawend;
+	int		stepx;
+	int		stepy;
+	int		side;
+	int		mapx;
+	int		mapy;
+	int		hit;
+}				t_raycasting;
+
+typedef struct s_data
+{
+	int		pos_x;
+	int		pos_y;
+	char	**map;
+	int		x;
+	int		y;
+}				t_data;
+
+typedef struct s_cub
+{
+    char **map;
+    char *NO;
+    char *SO;
+    char *WE;
+    char *EA;
+    int f[3] ;
+    int c[3] ;
+} t_cub;
+
+typedef struct s_addres
+{
+	t_raycasting	*rcasting;
+	t_index			*index;
+	t_game			*game;
+	t_img			*img;
+	t_cub			*cub;
+	t_data			data;
+}				t_addres;
+
+// *****************************************
 
 typedef  struct s_map 
 {
     char	        **texture;
     char            **playfield;
-    // char            *NO;
-    // char            *WE;
-    // char            *SO;
-    // char            *EA;
     char            **map; 
     int             height;
     int             width;
@@ -36,7 +146,12 @@ typedef  struct s_map
 	int				win_h;
     char            **result;
     char            **result2;
+    int term[3];
+    int c[3];
+    int f[3];
 } t_map;
+
+
 
 
 
@@ -87,4 +202,52 @@ int substring_appears_once(char **arr, char *sub);
 int chgitem(char **texture, t_map *map);
 
 int	create_imges(t_map *map);
+int	ft_isdigit(int i);
+int valid_color(char *str, t_map *map);
+char	*ft_strtrim(char const *s1, char const *set);
+int	ft_atoi(const char *str);
+int validate_colors(char **texture, t_map * map);
+int check_news(char **map);
+int check_map_symbols(char **map);
+int check_empty_line(char **playfield);
+void init_cub(t_map *map,t_cub *cub);
+void	initializer(t_addres *addres);
+int	create_trgb(int r, int g, int b);
+void	init_struct_game(t_addres *address);
+void	init_struct_index(t_addres *address);
+void	init_struct_img(t_addres *address);
+void	init_struct_raycasting(t_addres *address);
+void	init_structs(t_addres *address);
+void	draw_floor_and_celling(t_addres *data, char *dest);
+int	ft_texx(t_addres *address, int n);
+int	draw_walls(t_addres *address, char *dest, char *dest_2, int texx);
+void	norm_init_win_3(t_addres *address);
+float	ft_abs(float num);
+char	*get_correct_arg(char *ptr);
+void	init_plane(t_addres *address, double i, double j);
+void	init_dir(t_addres *address, double i, double j);
+void	init_player_pos(t_addres *address, int i, int j);
+void	ft_get_data_addr(t_addres *address);
+int	check_nwse(t_addres *address);
+void	find_pos_player(t_addres *address);
+void	norm_init_win_2(t_addres *address);
+void	norm_init_win(t_addres *address);
+void	continue_init_win(t_addres *address);
+void	init_win(t_addres *address);
+int	key_manager(int key, t_addres *address);
+void	rotate_right(t_addres *address, double rotate);
+void	move_left(t_addres *address);
+void	move_right(t_addres *address);
+void	move_up(t_addres *address);
+void	move_down(t_addres *address);
+void	print_close(t_addres *address, char *str);
+int	close_game(t_addres *address);
+void	print_error(t_addres *address, char *err, int flag);
+void	free_cub(t_cub map);
+void	free_mtx(char **mtx);
+
+void	free_all(t_addres *address);
+
+
+
 #endif

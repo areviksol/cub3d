@@ -1,35 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_map.c                                          :+:      :+:    :+:   */
+/*   key_manager.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rkochary <rkochary@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/13 17:11:06 by rkochary          #+#    #+#             */
-/*   Updated: 2023/04/13 17:11:12 by rkochary         ###   ########.fr       */
+/*   Created: 2023/02/24 20:53:10 by suhovhan          #+#    #+#             */
+/*   Updated: 2023/04/14 19:32:10 by rkochary         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub.h"
+#include "../cub.h"
 
-static void	throwmessage(void)
+int	key_manager(int key, t_addres *address)
 {
-	perror("Error");
-	exit(1);
-}
-
-int	getheightofmap(char **map)
-{
-	int	i;
-
-	i = 0;
-	while (map[i] != NULL)
-		i++;
-	return (i);
-}
-
-void	helper(int cond)
-{
-	if (cond)
-		throwmessage();
+	if (key == ESC)
+		close_game(address);
+	if (key == RIGHT)
+		rotate_right(address, -ROTATE_SPEED);
+	if (key == LEFT)
+		rotate_right(address, ROTATE_SPEED);
+	if (key == A)
+		move_left(address);
+	if (key == D)
+		move_right(address);
+	if (key == W)
+		move_up(address);
+	if (key == S)
+		move_down(address);
+	init_win(address);
+	return (0);
 }

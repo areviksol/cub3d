@@ -1,35 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_map.c                                          :+:      :+:    :+:   */
+/*   print_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rkochary <rkochary@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/13 17:11:06 by rkochary          #+#    #+#             */
-/*   Updated: 2023/04/13 17:11:12 by rkochary         ###   ########.fr       */
+/*   Created: 2023/02/24 20:54:16 by suhovhan          #+#    #+#             */
+/*   Updated: 2023/04/14 19:53:46 by rkochary         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub.h"
+#include "../cub.h"
 
-static void	throwmessage(void)
+void	print_close(t_addres *address, char *str)
 {
-	perror("Error");
-	exit(1);
+	write(1, str, ft_strlen(str));
+	//free_all(address);
 }
 
-int	getheightofmap(char **map)
+int	close_game(t_addres *address)
 {
-	int	i;
-
-	i = 0;
-	while (map[i] != NULL)
-		i++;
-	return (i);
+	print_close(address, "Game closed successfully\n");
+	exit(0);
 }
 
-void	helper(int cond)
+void	print_error(t_addres *address, char *err, int flag)
 {
-	if (cond)
-		throwmessage();
+	write(2, "Error!\n", 7);
+	write(2, err, ft_strlen(err));
+	write(2, "\n", 1);
+	//if (flag == 1)
+		//free_all(address);
+	exit(EXIT_FAILURE);
 }

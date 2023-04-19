@@ -23,6 +23,18 @@ void get_textures(char **map, t_map *m)
     m->texture[i] = NULL;
 }
 
+int is_empty_string(char *str)
+{
+    int i = 0;
+    while(str[i])
+    {
+        if(!ft_isspace(str[i]))
+            return 0;
+        i++;
+    }
+    return 1; 
+}
+
 void get_playfield(char **map, t_map *m)
 {
     int i;
@@ -31,6 +43,11 @@ void get_playfield(char **map, t_map *m)
     m->playfield = (char **)malloc(sizeof(char *) * countStringLength(map) - 6);
     while(map[i])
     {
+        if(is_empty_string(map[i]))
+        {
+            printf("Error: Empty line \n");
+            exit(1);
+        }
         m->playfield[j] = map[i];
         i++;
         j++;
@@ -59,11 +76,17 @@ int get_symbol_count(char **map, char c)
 {
     int i;
     i = 0;
+    int j = 0;
     int count = 0;
     while(*map)
-    {
-        if(*map[i] == c) 
-            count++;        
+    {   
+        j = 0;
+        while(map[i][j])
+        {
+            if(map[i][j] == c) 
+                count++;
+            j++;        
+        }
         map++;
     }
     return count;
@@ -76,7 +99,9 @@ int check_news(char **map)
     int e =  get_symbol_count(map, 'E');  
     int s =  get_symbol_count(map, 'S'); 
     if((n + s + w + e) != 1)
-        return 0;
+    {
+        return ft_perror("Error: wrong player count\n");
+    }
     return 1;
 }
 
@@ -91,7 +116,7 @@ int check_map_symbols(char **map)
             return ft_perror("not valid symbol exist in map\n");       
         map++;
     }
-    return 0;
+    return 1;
 }
 
 int check_the_char(char c)
@@ -101,10 +126,27 @@ int check_the_char(char c)
     return 1;
 }
 
+int check_empty_line(char **playfield)
+{
+    int len;
+    int i;
+    len = countStringLength(playfield);
+    i = 0;
+    	while(playfield[i])
+		{
+			if((playfield[i] == NULL || !strcmp(playfield[i], "")) && i != len - 1)
+                return ft_perror("Error: Empty line\n");
+            i++;
+		}
+        return (1);
+}
+
 int	check_cordination(char **map, int x, int y)
 {
 	if (x == 0)
 		return (0);
+    if(ft_strlen(map[x-1]) < y)
+        return (0);
 	if (!map[x - 1] || !map[x - 1][y] || \
 	(map[x - 1][y] != '1' && map[x - 1][y] != '0' && \
 	map[x - 1][y] != 'N' && map[x - 1][y] != 'S' && \
@@ -139,7 +181,7 @@ int zroyi_koghy_mek(char **map)
     {
         if(map[0][i] != '1' && !ft_isspace(map[0][i]) )
         {
-            return ft_perror("Error not 1 \n");
+            return ft_perror("Error \n");
         }
         i++;
     }
@@ -181,7 +223,7 @@ int is_map_okay(char **array)
         i++;
     }
 
-    return 0;
+    return 1;
 }
 
 
@@ -242,6 +284,11 @@ int chgitem(char **texture, t_map *map)
         }
         map->result[i] = arr[0];
         map->result2[i] = arr[1];
+        // if(!(!strcmp(arr[0], "NO" ) || !strcmp(arr[0], "SO") || !strcmp(arr[0], "EA") || !strcmp(arr[0],  "WE") ))
+        //     free_mtx(arr);
+        // else{
+        //     free(arr);
+      //  }
         i++;
     }
     map->result[i] = NULL;
@@ -270,3 +317,122 @@ int substring_appears_once(char **arr, char *sub)
     }
     return 1;
 }
+
+char	*ft_substr2(char *s, int start, int len)
+{
+	char	*ret;
+
+	if (!s)
+		return (0);
+	if (ft_strlen(s) < start)
+		len = 0;
+	if (ft_strlen(s + start) < len)
+		len = ft_strlen(s + start);
+	ret = malloc(sizeof(char) * (len + 1));
+	if (!ret)
+		return (0);
+	ft_strlcpy(ret, s + start, len + 1);
+	return (ret);
+}
+
+int validate_colors(char **texture, t_map * map)
+{
+    int count_f = 0;
+    int count_c = 0;;
+    int index_f = 0;
+    int index_c = 0;
+    int i = 0;
+    char * r = 0;
+    char * g = 0;
+    char * b = 0;
+    
+    while(i < 6)
+    {
+        if(texture[i][0] == 'F' && texture[i][1] && ft_isspace(texture[i][1]))
+        {
+            index_f = i;
+            count_f++;
+        }
+        if(texture[i][0] == 'C' && texture[i][1] && ft_isspace(texture[i][1]))
+        {
+            index_c = i;
+            count_c++;
+        }
+        i++;
+    }
+    if(count_c != 1 || count_f != 1)
+        return ft_perror("Error: wrong color arguments\n");
+    if(!(texture[index_c][2] >= '0' && texture[index_c][2] <= '9'))
+        return ft_perror("Error: not valid symbols\n");
+    if(!(texture[index_f][2] >= '0' && texture[index_f][2] <= '9'))
+        return ft_perror("Error: not valid symbols\n");
+    if(!valid_color(texture[index_c], map))
+    {
+        return 0;
+    }
+    map->c[0] = map->term[0];
+    map->c[1] = map->term[1];
+    map->c[2] = map->term[2];
+    if(!valid_color(texture[index_f], map))
+    {       
+        return 0;
+    }
+    map->f[0] = map->term[0];
+    map->f[1] = map->term[1];
+    map->f[2] = map->term[2];
+    return (1);
+}
+
+int is_digital_str(char *str)
+{
+    int i;
+    i = 0;
+
+    while(str[i])
+    {
+        if(!ft_isdigit(str[i]))
+            return (0);
+        i++;
+    }
+    return (1);
+}
+
+
+int valid_color(char *str, t_map *map)
+{
+    char *nums;
+    char **arr;
+    int i;
+    i = 0;
+
+    while(!ft_isdigit(str[i]))
+    {
+        i++;
+    }
+    nums = ft_substr2(str,i,ft_strlen(str) - 2);
+    arr = ft_split(nums,',');
+    free(nums);
+    i = 0;
+    char * p= NULL;
+
+    while(arr[i])
+    {
+        p = arr[i];
+        arr[i] = ft_strtrim(arr[i]," \r\v\f\t");
+        if(!is_digital_str(arr[i]))
+            return ft_perror("Error: not valid symbols\n");
+        if(ft_atoi(arr[i]) < 0 || ft_atoi(arr[i]) > 255)
+            return ft_perror("Error: not valid symbols\n");
+        free(p);
+        i++;
+    }
+    if(countStringLength(arr) != 3)
+        return ft_perror("Error: not valid symbols\n");
+    map->term[0] = ft_atoi(arr[0]);
+    map->term[1] = ft_atoi(arr[1]);
+    map->term[2] = ft_atoi(arr[2]);
+    free_mtx(arr);
+
+    return (1);
+}
+

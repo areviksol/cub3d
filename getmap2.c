@@ -71,7 +71,7 @@ void	norm_read_map(char **full_line, char **line, int *flag)
 			*full_line = ft_strdup(*line);
 		else
 			*full_line = ft_strjoin(ptr, *line);
-		//free(ptr);//seg
+		free(ptr);//seg
 	}
 }
 

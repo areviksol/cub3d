@@ -160,8 +160,80 @@ int ft_perror(char *str)
 		return (0);
 	}
 */
+
+void	getter_cub(t_data *data, t_cub cub)
+{
+	int		i;
+	char	**map;
+
+	i = -1;
+	while (cub.map[++i])
+		;
+	map = (char **)malloc(sizeof(char *) * (i + 2));
+	if (!map)
+		return ;
+	i = -1;
+	while (cub.map[++i])
+		map[i] = ft_strdup(cub.map[i]);
+	map[i] = 0;
+	data->map = map;
+}
+
+t_data	data_collector(t_cub cub, t_map map)
+{
+	t_data	data;
+
+	data.map = map.playfield;
+	data.x = -1;
+	data.y = -1;
+	//getter_cub(&data, cub);
+	printf("x is %d\n", data.pos_x);
+	printf("y is %d\n", data.pos_y);
+	// while(map.playfield[++data.x])
+	// {
+	// 	printf( ">>>%s\n", map.playfield[++data.x]);
+	// 	data.y = -1;
+	// 	while(map.playfield[data.x][data.y])
+	// 	{
+	// 		if(map.playfield[data.x][data.y] == 'E' || \
+	// 		map.playfield[data.x][data.y] == 'N' || \
+	// 		map.playfield[data.x][data.y] == 'S' || \
+	// 		map.playfield[data.x][data.y] == 'W')
+	// 		{
+	// 			data.pos_x = data.x;
+	// 			data.pos_y = data.y;
+	// 		}
+	// 		++data.y;
+	// 	}
+	// }
+	// while (data.map[++(data.y)])
+	// {
+	// 	data.x = -1;
+	// 	while (data.map[++data.y])
+	// 	{
+	// 		if (data.map[data.x][data.y] == 'E' || \
+	// 		data.map[data.x][data.y] == 'N' \
+	// 		|| data.map[data.x][data.y] == 'S' || \
+	// 		data.map[data.x][data.y] == 'W')
+	// 		{
+	// 			data.pos_x = data.x;
+	// 			data.pos_y = data.y;
+	// 			break ;
+	// 		}
+	// 	}
+	// }
+	printf("x is %d\n", data.pos_x);
+	printf("y is %d\n", data.pos_y);
+	return (data);
+	// data.x = -1;
+	// data.y = -1;
+}
+
 int	main(int argc, char **argv)
 {
+	t_addres addres;
+
+	addres.cub = malloc(sizeof(t_cub));
 
 	if(argc == 2)
 	{
@@ -171,9 +243,18 @@ int	main(int argc, char **argv)
 		//parser
 		// aaa->mlx = mlx_init();
 		// if (aaa->mlx == NULL)
-    	// 	return ft_perror("Failed to initialize mlx");
+    	 	//return ft_perror("Failed to initialize mlx");
+		aaa->map = array;
+
+
+		printf("?????????????\n");
 		get_textures(array, aaa);
-		get_playfield(array, aaa); 
+		get_playfield(array, aaa);
+		check_empty_line(aaa->playfield);
+		if(!check_news(aaa->playfield))
+			exit(1); 
+		if(!check_map_symbols(aaa->playfield))
+			exit(1);
 		if(!zroyi_koghy_mek(aaa->playfield))
 			exit(1);
 		if(!is_map_okay(array))
@@ -185,15 +266,38 @@ int	main(int argc, char **argv)
 		aaa->result2 = (char **)malloc(sizeof(char *) * (7));
 		if(!chgitem(aaa->texture, aaa))
 			exit(1);
-		if(!substring_appears_once(aaa->result, "NO"))
+		 if(!substring_appears_once(aaa->result, "NO"))
 			exit(1);
-		if(!substring_appears_once(aaa->result, "SO"))
+		 if(!substring_appears_once(aaa->result, "SO"))
+		 	exit(1);
+		 if(!substring_appears_once(aaa->result, "EA"))
 			exit(1);
-		if(!substring_appears_once(aaa->result, "EA"))
+		 if(!substring_appears_once(aaa->result, "WE"))
+		 	exit(1);
+		if(!validate_colors(aaa->texture, aaa))
 			exit(1);
-		if(!substring_appears_once(aaa->result, "WE"))
-			exit(1);
-		// create_imges(aaa);
+		init_cub(aaa, addres.cub);
+		init_structs(&addres);
+		addres.data = data_collector(*addres.cub, *aaa);
+		//printf("fcvdb");
+		initializer(&addres);
+		init_win(&addres);
+		int i = 0;
+		while(i < 6)
+		{
+			free(aaa->texture[i]);
+			i++;
+		}
+		free(aaa->texture);
+		aaa->texture = NULL;
+		mlx_hook(addres.game->win, 17, 1L << 0, close_game, &addres);
+		mlx_hook(addres.game->win, 2, 1L << 0, key_manager, &addres);
+		mlx_loop(addres.game->mlx);
+		 create_imges(aaa);
+		// while(1) 
+		// 	;
+		//valid_color();
+
 	}else
 		ft_perror("arg count is not 2\n");
 	return (0);
