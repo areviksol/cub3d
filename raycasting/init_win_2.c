@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_win_2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ergrigor < ergrigor@student.42yerevan.am > +#+  +:+       +#+        */
+/*   By: aremkrtc <aremkrtc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 20:49:28 by suhovhan          #+#    #+#             */
-/*   Updated: 2023/04/19 15:55:49 by ergrigor         ###   ########.fr       */
+/*   Updated: 2023/04/20 16:52:46 by aremkrtc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,65 +54,31 @@ int	ft_texx(t_addres *address, int n)
 
 int	draw_walls(t_addres *address, char *dest, char *dest_2, int texx)
 {
-    double step;
-    double texpos;
-    int texy;
-    int i;
-    int n;
+	double	step;
+	double	texpos;
+	int		texy;
+	int		i;
+	int		n;
 
-    n = check_nwse(address);
-    i = address->rcasting->drawstart;
-    texx = (int)ft_texx(address, n);
-    step = 1.0 * address->img[n].width / address->rcasting->lineheight;
-    texpos = (address->rcasting->drawstart - HEIGHT / 2 + address->rcasting->lineheight / 2) * step;
-
-    while (i < address->rcasting->drawend)
-    {
-        texy = (int)texpos & address->img[n].height;
-        texpos += step;
-
-        // initialize dest pointer to current pixel location in screen image
-        dest = address->img[0].img + (i * address->img[0].size_line + address->game->index * (address->img[0].bpp / 8));
-
-        // initialize dest_2 pointer to current texture pixel location
-        dest_2 = address->img[n].img + (texy * address->img[n].size_line + texx * (address->img[n].bpp / 8));
-
-        // copy the color value from the texture image to the screen image
-        *(int *)dest = *(int *)dest_2;
-
-        i++;
-    }
-
-    return (0);
+	n = check_nwse(address);
+	i = address->rcasting->drawstart;
+	texx = (int)ft_texx(address, n);
+	step = 1.0 * address->img[n].width / address->rcasting->lineheight;
+	texpos = (address->rcasting->drawstart - HEIGHT / 2 + \
+	address->rcasting->lineheight / 2) * step;
+	while (i < address->rcasting->drawend)
+	{
+		texy = (int)texpos & address->img[n].height;
+		texpos += step;
+		dest = address->img[0].img + (i * address->img[0].size_line + \
+		address->game->index * (address->img[0].bpp / 8));
+		dest_2 = address->img[n].img + (texy * address->img[n].size_line + \
+		texx * (address->img[n].bpp / 8));
+		*(int *)dest = *(int *)dest_2;
+		i++;
+	}
+	return (0);
 }
-
-// int	draw_walls(t_addres *address, char *dest, char *dest_2, int texx)
-// {
-// 	double	step;
-// 	double	texpos;
-// 	int		texy;
-// 	int		i;
-// 	int		n;
-
-// 	n = check_nwse(address);
-// 	i = address->rcasting->drawstart;
-// 	texx = (int)ft_texx(address, n);
-// 	step = 1.0 * address->img[n].width / address->rcasting->lineheight;
-// 	texpos = (address->rcasting->drawstart - HEIGHT / 2 + \
-// 	address->rcasting->lineheight / 2) * step;
-// 	while (i < address->rcasting->drawend)
-// 	{
-// 		texy = (int)texpos & address->img[n].width;
-// 		texpos += step;
-// 		dest = address->img[0].img + (i * address->img[0].size_line + \
-// 		address->game->index * (address->img[0].bpp / 8));
-// 		dest_2 = address->img[n].img + ((int)texpos * \
-// 		address->img[n].size_line + texx * (address->img[n].bpp / 8));
-// 		*(int *)dest = *(int *)dest_2;
-// 		i++;
-// 	}
-// 	return (0);
-// }
 
 void	norm_init_win_3(t_addres *address)
 {

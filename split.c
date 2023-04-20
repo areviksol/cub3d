@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   split.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rkochary <rkochary@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aremkrtc <aremkrtc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 15:53:01 by aremkrtc          #+#    #+#             */
-/*   Updated: 2023/04/14 14:54:25 by rkochary         ###   ########.fr       */
+/*   Updated: 2023/04/20 13:56:39 by aremkrtc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ char	*malloc_strings(char *s, char c)
 	i = 0;
 	while (s[i] && s[i] != c)
 		i++;
-
 	word = (char *)malloc(sizeof(char) * (i + 1));
 	if (!word)
 	{
@@ -105,40 +104,4 @@ char	**ft_split(char *s, char c)
 	if (words == 0)
 		return (NULL);
 	return (split_loop(s, c, i, words));
-}
-
-
-size_t	ft_nb_len(int nb)
-{
-	int	len;
-
-	len = 0;
-	if (nb <= 0)
-		len++;
-	while (nb)
-	{
-		len++;
-		nb = nb / 10;
-	}
-	return (len);
-}
-
-char	*ft_strdup(const char *s1)
-{
-	unsigned int	size;
-	char			*ptr;
-	int				i;
-
-	size = ft_strlen2(s1);
-	ptr = malloc((size + 1) * sizeof(char));
-	if (!ptr)
-		return (NULL);
-	i = 0;
-	while (s1[i])
-	{
-		ptr[i] = s1[i];
-		i++;
-	}
-	ptr[i] = '\0';
-	return (ptr);
 }

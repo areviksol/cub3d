@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_window.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rkochary <rkochary@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aremkrtc <aremkrtc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 20:49:13 by suhovhan          #+#    #+#             */
-/*   Updated: 2023/04/16 14:36:58 by rkochary         ###   ########.fr       */
+/*   Updated: 2023/04/20 16:16:43 by aremkrtc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@ void	initializer(t_addres *address)
 	address->game->win = mlx_new_window(address->game->mlx, WIDTH, \
 	HEIGHT, "IT IS MY CUB3D!");
 	address->game->no = mlx_xpm_file_to_image(address->game->mlx, \
-	address->cub->NO, &address->img[1].width, &address->img[1].height);
+	address->cub->no, &address->img[1].width, &address->img[1].height);
 	address->game->so = mlx_xpm_file_to_image(address->game->mlx, \
-	address->cub->SO, &address->img[2].width, &address->img[2].height);
+	address->cub->so, &address->img[2].width, &address->img[2].height);
 	address->game->ea = mlx_xpm_file_to_image(address->game->mlx, \
-	address->cub->EA, &address->img[3].width, &address->img[3].height);
+	address->cub->ea, &address->img[3].width, &address->img[3].height);
 	address->game->we = mlx_xpm_file_to_image(address->game->mlx, \
-	address->cub->WE, &address->img[4].width, &address->img[4].height);
+	address->cub->we, &address->img[4].width, &address->img[4].height);
 	address->game->f_color = create_trgb(address->cub->f[0], \
 	address->cub->f[1], address->cub->f[2]);
 	address->game->c_color = create_trgb(address->cub->c[0], \

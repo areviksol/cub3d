@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_trim.c                                          :+:      :+:    :+:   */
+/*   ft_substr2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aremkrtc <aremkrtc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/13 15:44:33 by rkochary          #+#    #+#             */
-/*   Updated: 2023/04/20 13:33:22 by aremkrtc         ###   ########.fr       */
+/*   Created: 2023/04/20 15:38:05 by aremkrtc          #+#    #+#             */
+/*   Updated: 2023/04/20 15:38:23 by aremkrtc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub.h"
 
-char	*ft_strtrim(char const *s1, char const *set)
+char	*ft_substr2(char *s, int start, int len)
 {
-	size_t	i;
+	char	*ret;
 
-	if (!s1)
+	if (!s)
 		return (0);
-	while (*s1 && ft_strchr(set, *s1))
-		s1++;
-	i = ft_strlen(s1);
-	while (i && ft_strchr(set, s1[i]))
-		i--;
-	return (ft_substr(s1, 0, i + 1));
+	if (ft_strlen(s) < start)
+		len = 0;
+	if (ft_strlen(s + start) < len)
+		len = ft_strlen(s + start);
+	ret = malloc(sizeof(char) * (len + 1));
+	if (!ret)
+		return (0);
+	ft_strlcpy(ret, s + start, len + 1);
+	return (ret);
 }

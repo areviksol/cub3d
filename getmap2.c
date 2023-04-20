@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   getmap2.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aremkrtc <aremkrtc@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/20 13:35:05 by aremkrtc          #+#    #+#             */
+/*   Updated: 2023/04/20 13:35:49 by aremkrtc         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub.h"
 
 int	find_char(char *str)
@@ -35,8 +47,6 @@ int	ft_strcmp(const char *s1, const char *s2)
 	return (0);
 }
 
-
-
 char	**getmap(char *filename)
 {
 	int		fd;
@@ -49,7 +59,7 @@ char	**getmap(char *filename)
 		return (NULL);
 	full_line = read_map(fd);
 	map = ft_split(full_line, '\n');
-	//free(full_line);//seg
+	free(full_line);
 	close(fd);
 	return (map);
 }
@@ -71,7 +81,7 @@ void	norm_read_map(char **full_line, char **line, int *flag)
 			*full_line = ft_strdup(*line);
 		else
 			*full_line = ft_strjoin(ptr, *line);
-		free(ptr);//seg
+		free(ptr);
 	}
 }
 

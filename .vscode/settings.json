@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "VALIDATION5.C": "cpp",
+        "stdio.h": "c",
+        "mlx.h": "c",
+        "string.h": "c"
+    }
+}

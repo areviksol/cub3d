@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_win.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rkochary <rkochary@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aremkrtc <aremkrtc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 20:52:36 by suhovhan          #+#    #+#             */
-/*   Updated: 2023/04/16 14:56:08 by rkochary         ###   ########.fr       */
+/*   Updated: 2023/04/20 16:38:20 by aremkrtc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	find_pos_player(t_addres *address)
 	int	j;
 
 	i = 0;
-	// printf(">>%s<<\n", address->data.map[i]);
 	while (address->data.map[i])
 	{
 		j = 0;

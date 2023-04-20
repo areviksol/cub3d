@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ergrigor < ergrigor@student.42yerevan.am > +#+  +:+       +#+        */
+/*   By: aremkrtc <aremkrtc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 16:29:48 by rkochary          #+#    #+#             */
-/*   Updated: 2023/04/19 15:59:28 by ergrigor         ###   ########.fr       */
+/*   Updated: 2023/04/20 16:41:15 by aremkrtc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,25 +30,12 @@ void	free_mtx(char **mtx)
 
 void	free_cub(t_cub map)
 {
-	free(map.NO);
 	free_mtx(map.map);
-    free(map.SO);
-    free(map.NO);
-    free(map.EA);
-    free(map.WE);
+	free(map.so);
+	free(map.no);
+	free(map.ea);
+	free(map.we);
 }
-
-// void	free_elements(t_elements elements)
-// {
-// 	free(elements._no);
-// 	free(elements._so);
-// 	free(elements._we);
-// 	free(elements._ea);
-// 	elements._no = NULL;
-// 	elements._so = NULL;
-// 	elements._we = NULL;
-// 	elements._ea = NULL;
-// }
 
 void	free_game(t_game *game)
 {
@@ -72,7 +59,6 @@ void	free_all(t_addres *address)
 
 	i = -1;
 	free_cub(*address->cub);
-	free_mtx(address->data.map);
 	free_game(address->game);
 	while (++i < 5)
 	{

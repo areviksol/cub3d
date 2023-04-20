@@ -1,5 +1,16 @@
-#include "cub.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aremkrtc <aremkrtc@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/20 13:50:48 by aremkrtc          #+#    #+#             */
+/*   Updated: 2023/04/20 13:53:46 by aremkrtc         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include	"cub.h"
 
 size_t	ft_strlcpy(char *dest, const char *src, size_t len)
 {
@@ -19,23 +30,6 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t len)
 		dest[i] = 0;
 	return (res);
 }
-
-
-// char	*ft_strdup(const char *s1)
-// {
-// 	char	*new;
-// 	int		len;
-
-// 	if (!s1)
-// 		return (NULL);
-// 	len = ft_strlen((char *)s1);
-// 	new = (char *)malloc(len + 1);
-// 	if (!new)
-// 		return (NULL);
-// 	ft_strlcpy(new, s1, len + 1);
-// 	return (new);
-// }
-
 
 int	tab_count(char	*str)
 {
@@ -91,24 +85,17 @@ char	*reset_tabs(char *str)
 	return (line);
 }
 
-void clean_tabs(char **map)
+void	clean_tabs(char **map)
 {
-    int i;
-    i = 0;
-    char *ptr;
-    while(map[i])
-    {
-        ptr = map[i];
-        map[i] = reset_tabs(ptr);
-       free(ptr);
-        i++;
-    }
-}
+	int		i;
+	char	*ptr;
 
-void parser (t_map *map)
-{
-    if(!map->map || !*map->map)
-        exit(1);
-    clean_tabs(map->map);
-	
+	i = 0;
+	while (map[i])
+	{
+		ptr = map[i];
+		map[i] = reset_tabs(ptr);
+		free(ptr);
+		i++;
+	}
 }
