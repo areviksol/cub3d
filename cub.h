@@ -6,7 +6,7 @@
 /*   By: aremkrtc <aremkrtc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 15:54:10 by aremkrtc          #+#    #+#             */
-/*   Updated: 2023/04/20 16:37:15 by aremkrtc         ###   ########.fr       */
+/*   Updated: 2023/04/20 17:04:21 by aremkrtc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -261,5 +261,6 @@ void			main_helper(t_map *aaa, char **array, char **argv);
 void			main_helper2(t_map *aaa);
 void			free_texture(t_map *aaa);
 void			main_h(t_map *aaa, char **array, t_cub *cub, char **argv);
+void			free_result(char **arr);
 
 #endif
