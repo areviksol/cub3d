@@ -6,7 +6,7 @@
 /*   By: aremkrtc <aremkrtc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 13:45:08 by aremkrtc          #+#    #+#             */
-/*   Updated: 2023/04/21 14:50:41 by aremkrtc         ###   ########.fr       */
+/*   Updated: 2023/04/21 19:25:33 by aremkrtc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,3 +94,4 @@ int	main(int argc, char **argv)
 		ft_perror("arg count is not 2\n");
 	return (0);
 }
+  
