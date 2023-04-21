@@ -6,7 +6,7 @@
 /*   By: aremkrtc <aremkrtc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 15:07:13 by aremkrtc          #+#    #+#             */
-/*   Updated: 2023/04/20 17:02:29 by aremkrtc         ###   ########.fr       */
+/*   Updated: 2023/04/21 18:48:43 by aremkrtc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ int	chgitem(char **texture, t_map *map)
 		!ft_strcmp(arr[0], "SO") || !ft_strcmp(arr[0], "EA") \
 		|| !ft_strcmp(arr[0], "WE")))
 			flag = 1;
-		map->result[i] = arr[0];
-		map->result2[i] = arr[1];
-		free_result(arr);
+		map->result[i] = ft_strdup(arr[0]);
+		map->result2[i] = ft_strdup(arr[1]);
+		free_mtx(arr);
 		i++;
 	}
 	map->result[i] = NULL;
