@@ -6,7 +6,7 @@
 /*   By: aremkrtc <aremkrtc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 15:54:10 by aremkrtc          #+#    #+#             */
-/*   Updated: 2023/04/20 17:04:21 by aremkrtc         ###   ########.fr       */
+/*   Updated: 2023/04/21 14:59:07 by aremkrtc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,16 +141,6 @@ typedef struct s_cub
 	int		c[3];
 }	t_cub;
 
-typedef struct s_addres
-{
-	t_raycasting	*rcasting;
-	t_index			*index;
-	t_game			*game;
-	t_img			*img;
-	t_cub			*cub;
-	t_data			data;
-}				t_addres;
-
 typedef struct s_map
 {
 	char			**texture;
@@ -170,10 +160,20 @@ typedef struct s_map
 	int				win_h;
 	char			**result;
 	char			**result2;
-	int				term[3];
 	int				c[3];
 	int				f[3];
+	int				term[3];
 }	t_map;
+
+typedef struct s_addres
+{
+	t_raycasting	*rcasting;
+	t_index			*index;
+	t_game			*game;
+	t_img			*img;
+	t_cub			*cub;
+	t_data			data;
+}				t_addres;
 
 void			isfilevalid(char *file_line);
 char			**getmap(char *path);

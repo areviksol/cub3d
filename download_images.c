@@ -6,7 +6,7 @@
 /*   By: aremkrtc <aremkrtc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 17:14:21 by rkochary          #+#    #+#             */
-/*   Updated: 2023/04/20 13:34:34 by aremkrtc         ###   ########.fr       */
+/*   Updated: 2023/04/21 14:49:17 by aremkrtc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ int	create_imges(t_map *map)
 	map->result2[3], &map->img_w, &map->img_h);
 	if (!map->imgn || !map->imgs || !map->imgw || !map->imge)
 		return (ft_perror("Not valid image path"));
+	free_mtx(map->result2);
 	return (1);
 }

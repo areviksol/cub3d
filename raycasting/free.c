@@ -6,7 +6,7 @@
 /*   By: aremkrtc <aremkrtc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 16:29:48 by rkochary          #+#    #+#             */
-/*   Updated: 2023/04/20 16:41:15 by aremkrtc         ###   ########.fr       */
+/*   Updated: 2023/04/21 14:50:57 by aremkrtc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,4 +73,5 @@ void	free_all(t_addres *address)
 	address->index = NULL;
 	address->game = NULL;
 	address->img = NULL;
+	free(address->cub);
 }

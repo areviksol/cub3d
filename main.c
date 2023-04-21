@@ -6,7 +6,7 @@
 /*   By: aremkrtc <aremkrtc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 13:45:08 by aremkrtc          #+#    #+#             */
-/*   Updated: 2023/04/20 16:37:54 by aremkrtc         ###   ########.fr       */
+/*   Updated: 2023/04/21 14:50:41 by aremkrtc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,23 +74,21 @@ int	main(int argc, char **argv)
 {
 	t_addres	addres;
 	char		**array;
-	t_map		*aaa;
+	t_map		aaa;
 
 	addres.cub = malloc(sizeof(t_cub));
 	array = getmap("map.cub");
-	aaa = malloc(sizeof(t_map));
 	if (argc == 2)
 	{
-		main_h(aaa, array, addres.cub, argv);
+		main_h(&aaa, array, addres.cub, argv);
 		init_structs(&addres);
-		addres.data = data_collector(*addres.cub, *aaa);
+		addres.data = data_collector(*addres.cub, aaa);
 		initializer(&addres);
 		init_win(&addres);
-		free_texture(aaa);
 		mlx_hook(addres.game->win, 17, 1L << 0, close_game, &addres);
 		mlx_hook(addres.game->win, 2, 1L << 0, key_manager, &addres);
 		mlx_loop(addres.game->mlx);
-		create_imges(aaa);
+		create_imges(&aaa);
 	}
 	else
 		ft_perror("arg count is not 2\n");
