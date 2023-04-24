@@ -6,7 +6,7 @@
 /*   By: aremkrtc <aremkrtc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 15:54:10 by aremkrtc          #+#    #+#             */
-/*   Updated: 2023/04/21 14:59:07 by aremkrtc         ###   ########.fr       */
+/*   Updated: 2023/04/24 18:36:43 by aremkrtc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -246,7 +246,6 @@ void			move_left(t_addres *address);
 void			move_right(t_addres *address);
 void			move_up(t_addres *address);
 void			move_down(t_addres *address);
-void			print_close(t_addres *address, char *str);
 int				close_game(t_addres *address);
 void			print_error(t_addres *address, char *err, int flag);
 void			free_cub(t_cub map);

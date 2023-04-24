@@ -6,20 +6,19 @@
 /*   By: aremkrtc <aremkrtc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 20:54:16 by suhovhan          #+#    #+#             */
-/*   Updated: 2023/04/21 19:27:59 by aremkrtc         ###   ########.fr       */
+/*   Updated: 2023/04/24 18:40:11 by aremkrtc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub.h"
 
-void	print_close(t_addres *address, char *str)
-{
-	write(1, str, ft_strlen(str));
-	free_all(address);
-}
-
 int	close_game(t_addres *address)
 {
-	print_close(address, "Game closed successfully\n");
+	mlx_destroy_window(address->game->mlx, address->game->win);
+	write(1, "Game closed successfully\n", \
+	ft_strlen("Game closed successfully\n"));
+	free_all(address);
+	while(1)
+		;
 	exit(0);
 }

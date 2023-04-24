@@ -6,7 +6,7 @@
 /*   By: aremkrtc <aremkrtc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 13:45:08 by aremkrtc          #+#    #+#             */
-/*   Updated: 2023/04/21 19:25:33 by aremkrtc         ###   ########.fr       */
+/*   Updated: 2023/04/24 18:21:28 by aremkrtc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,10 +85,11 @@ int	main(int argc, char **argv)
 		addres.data = data_collector(*addres.cub, aaa);
 		initializer(&addres);
 		init_win(&addres);
+		//addres.result2 = aaa.result2;
+		//create_imges(&aaa);
 		mlx_hook(addres.game->win, 17, 1L << 0, close_game, &addres);
 		mlx_hook(addres.game->win, 2, 1L << 0, key_manager, &addres);
 		mlx_loop(addres.game->mlx);
-		create_imges(&aaa);
 	}
 	else
 		ft_perror("arg count is not 2\n");

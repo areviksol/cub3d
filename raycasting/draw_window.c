@@ -6,7 +6,7 @@
 /*   By: aremkrtc <aremkrtc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 20:49:13 by suhovhan          #+#    #+#             */
-/*   Updated: 2023/04/20 17:04:59 by aremkrtc         ###   ########.fr       */
+/*   Updated: 2023/04/24 18:09:14 by aremkrtc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,7 @@ void	initializer(t_addres *address)
 	if (address->game->mlx == NULL || address->game->win == NULL)
 		close_game(address);
 	if (address->game->no == NULL || address->game->so == NULL)
-	{
 		close_game(address);
-	}
 	if (address->game->we == NULL || address->game->ea == NULL)
 		close_game(address);
 }
