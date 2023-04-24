@@ -6,7 +6,7 @@
 /*   By: aremkrtc <aremkrtc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 17:14:21 by rkochary          #+#    #+#             */
-/*   Updated: 2023/04/21 19:21:24 by aremkrtc         ###   ########.fr       */
+/*   Updated: 2023/04/24 18:47:06 by aremkrtc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 
 int	create_imges(t_map *map)
 {
-	int	w;
-	int	h;
-
 	map->img_w = 50;
 	map->img_h = 50;
 	map->imgn = mlx_xpm_file_to_image(map->mlx, \

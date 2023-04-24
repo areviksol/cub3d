@@ -6,7 +6,7 @@
 /*   By: aremkrtc <aremkrtc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 15:38:05 by aremkrtc          #+#    #+#             */
-/*   Updated: 2023/04/20 15:38:23 by aremkrtc         ###   ########.fr       */
+/*   Updated: 2023/04/24 18:48:03 by aremkrtc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ char	*ft_substr2(char *s, int start, int len)
 
 	if (!s)
 		return (0);
-	if (ft_strlen(s) < start)
+	if (ft_strlen(s) < (size_t)start)
 		len = 0;
-	if (ft_strlen(s + start) < len)
+	if (ft_strlen(s + start) < (size_t)len)
 		len = ft_strlen(s + start);
 	ret = malloc(sizeof(char) * (len + 1));
 	if (!ret)

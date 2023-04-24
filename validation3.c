@@ -6,7 +6,7 @@
 /*   By: aremkrtc <aremkrtc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 14:24:15 by aremkrtc          #+#    #+#             */
-/*   Updated: 2023/04/20 15:00:37 by aremkrtc         ###   ########.fr       */
+/*   Updated: 2023/04/24 18:47:39 by aremkrtc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	check_cordination(char **map, int x, int y)
 {
 	if (x == 0)
 		return (0);
-	if (ft_strlen(map[x - 1]) < y)
+	if (ft_strlen(map[x - 1]) < (size_t)y)
 		return (0);
 	if (!map[x - 1] || !map[x - 1][y] || \
 	(map[x - 1][y] != '1' && map[x - 1][y] != '0' && \

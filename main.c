@@ -6,7 +6,7 @@
 /*   By: aremkrtc <aremkrtc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 13:45:08 by aremkrtc          #+#    #+#             */
-/*   Updated: 2023/04/24 18:21:28 by aremkrtc         ###   ########.fr       */
+/*   Updated: 2023/04/24 18:49:14 by aremkrtc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,11 @@ static int	find(char *str, char *to_find)
 	int	i;
 
 	i = 0;
+	if(ft_strlen(str) != 4)
+	{
+		write(2, "error\n", 6);
+		exit(1);	
+	}
 	while (to_find[i])
 	{
 		if (to_find[i] != str[i])
@@ -63,7 +68,7 @@ int	ft_exit(t_map *v)
 t_data	data_collector(t_cub cub, t_map map)
 {
 	t_data	data;
-
+	(void)cub;
 	data.map = map.playfield;
 	data.x = -1;
 	data.y = -1;
