@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validation51.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aremkrtc <aremkrtc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rkochary <rkochary@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 15:07:13 by aremkrtc          #+#    #+#             */
-/*   Updated: 2023/04/21 18:48:43 by aremkrtc         ###   ########.fr       */
+/*   Updated: 2023/04/26 15:22:20 by rkochary         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,10 @@ int	chgitem(char **texture, t_map *map)
 			flag = 1;
 		map->result[i] = ft_strdup(arr[0]);
 		map->result2[i] = ft_strdup(arr[1]);
+		if(!ft_strcmp("NO",map->result[i]) || !ft_strcmp("SO",map->result[i]) || !ft_strcmp("EA",map->result[i]) || !ft_strcmp("WE",map->result[i]))
+		{
+		isimagevalid(map->result2[i]);
+		}
 		free_mtx(arr);
 		i++;
 	}

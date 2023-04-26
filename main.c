@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aremkrtc <aremkrtc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rkochary <rkochary@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 13:45:08 by aremkrtc          #+#    #+#             */
-/*   Updated: 2023/04/24 18:49:14 by aremkrtc         ###   ########.fr       */
+/*   Updated: 2023/04/26 15:26:04 by rkochary         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,24 @@ static int	find(char *str, char *to_find)
 	if (str[i] == '\0')
 		return (1);
 	return (0);
+}
+
+void	isimagevalid(char *file_line)
+{
+printf("%s\n",file_line);
+	while (*file_line)
+	{
+		if (*file_line == '.')
+		{
+			if (find(file_line, ".xpm"))
+			{
+				return ;
+			}
+		}
+		file_line++;
+	}
+	write(2, "image is not valid", 19);
+	exit(1);
 }
 
 void	isfilevalid(char *file_line)
@@ -90,8 +108,6 @@ int	main(int argc, char **argv)
 		addres.data = data_collector(*addres.cub, aaa);
 		initializer(&addres);
 		init_win(&addres);
-		//addres.result2 = aaa.result2;
-		//create_imges(&aaa);
 		mlx_hook(addres.game->win, 17, 1L << 0, close_game, &addres);
 		mlx_hook(addres.game->win, 2, 1L << 0, key_manager, &addres);
 		mlx_loop(addres.game->mlx);
