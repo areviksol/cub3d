@@ -42,7 +42,7 @@ int	valid_color(char *str, t_map *map)
 	{
 		p = arr[i];
 		arr[i] = ft_strtrim(arr[i], " \r\v\f\t");
-		if (!is_digital_str(arr[i]))
+		if (!is_digital_str(arr[i]) || !ft_strcmp(arr[i], ""))
 			return (ft_perror("Error: not valid symbols\n"));
 		if (ft_atoi(arr[i]) < 0 || ft_atoi(arr[i]) > 255)
 			return (ft_perror("Error: not valid symbols\n"));
