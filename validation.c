@@ -6,7 +6,7 @@
 /*   By: rkochary <rkochary@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 13:57:17 by aremkrtc          #+#    #+#             */
-/*   Updated: 2023/04/26 15:18:28 by rkochary         ###   ########.fr       */
+/*   Updated: 2023/04/26 15:30:14 by rkochary         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	get_playfield(char **map, t_map *m)
 	{
 		if (is_empty_string(map[i]))
 		{
-			printf("Error: Empty line \n");
+			write(2, "Error: Empty line \n", 19);
 			exit(1);
 		}
 		m->playfield[j] = map[i];

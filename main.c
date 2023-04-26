@@ -6,50 +6,11 @@
 /*   By: rkochary <rkochary@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 13:45:08 by aremkrtc          #+#    #+#             */
-/*   Updated: 2023/04/26 15:26:04 by rkochary         ###   ########.fr       */
+/*   Updated: 2023/04/26 15:49:23 by rkochary         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
-
-static int	find(char *str, char *to_find)
-{
-	int	i;
-
-	i = 0;
-	if(ft_strlen(str) != 4)
-	{
-		write(2, "error\n", 6);
-		exit(1);	
-	}
-	while (to_find[i])
-	{
-		if (to_find[i] != str[i])
-			return (0);
-		i++;
-	}
-	if (str[i] == '\0')
-		return (1);
-	return (0);
-}
-
-void	isimagevalid(char *file_line)
-{
-printf("%s\n",file_line);
-	while (*file_line)
-	{
-		if (*file_line == '.')
-		{
-			if (find(file_line, ".xpm"))
-			{
-				return ;
-			}
-		}
-		file_line++;
-	}
-	write(2, "image is not valid", 19);
-	exit(1);
-}
 
 void	isfilevalid(char *file_line)
 {
@@ -86,6 +47,7 @@ int	ft_exit(t_map *v)
 t_data	data_collector(t_cub cub, t_map map)
 {
 	t_data	data;
+
 	(void)cub;
 	data.map = map.playfield;
 	data.x = -1;
@@ -116,4 +78,3 @@ int	main(int argc, char **argv)
 		ft_perror("arg count is not 2\n");
 	return (0);
 }
-  

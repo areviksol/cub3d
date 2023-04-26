@@ -6,7 +6,7 @@
 /*   By: rkochary <rkochary@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 15:54:10 by aremkrtc          #+#    #+#             */
-/*   Updated: 2023/04/26 15:16:46 by rkochary         ###   ########.fr       */
+/*   Updated: 2023/04/26 15:51:34 by rkochary         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -261,6 +261,8 @@ void			main_helper2(t_map *aaa);
 void			free_texture(t_map *aaa);
 void			main_h(t_map *aaa, char **array, t_cub *cub, char **argv);
 void			free_result(char **arr);
-void	isimagevalid(char *file_line);
+void			isimagevalid(char *file_line);
+void			chgitem2(t_map *map, int i);
+int				find(char *str, char *to_find);
 
 #endif
