@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validation4.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aremkrtc <aremkrtc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rkochary <rkochary@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 14:54:06 by aremkrtc          #+#    #+#             */
-/*   Updated: 2023/04/20 15:19:22 by aremkrtc         ###   ########.fr       */
+/*   Updated: 2023/04/26 16:01:44 by rkochary         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,14 @@ int	validate_color_texture(char **texture, int numLines)
 	while (i < numLines)
 	{
 		v.line = texture[i];
-		if (!v.foundtextures && (strncmp(v.line, "NO", 2) == 0 \
-		|| strncmp(v.line, "SO", 2) == 0 || \
-		strncmp(v.line, "WE", 2) == 0 || strncmp(v.line, "EA", 2) == 0))
+		if (!v.foundtextures && (ft_strncmp(v.line, "NO", 2) == 0 \
+		|| ft_strncmp(v.line, "SO", 2) == 0 || \
+		ft_strncmp(v.line, "WE", 2) == 0 || ft_strncmp(v.line, "EA", 2) == 0))
 		{
 			v.foundtextures = 1;
 			continue ;
 		}
-		if (!v.foundfloorcolor && strncmp(v.line, "F", 1) == 0)
+		if (!v.foundfloorcolor && ft_strncmp(v.line, "F", 1) == 0)
 		{
 			v.foundfloorcolor = 1;
 			continue ;

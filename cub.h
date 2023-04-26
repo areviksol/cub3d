@@ -6,7 +6,7 @@
 /*   By: rkochary <rkochary@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 15:54:10 by aremkrtc          #+#    #+#             */
-/*   Updated: 2023/04/26 15:51:34 by rkochary         ###   ########.fr       */
+/*   Updated: 2023/04/26 16:04:24 by rkochary         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -264,5 +264,6 @@ void			free_result(char **arr);
 void			isimagevalid(char *file_line);
 void			chgitem2(t_map *map, int i);
 int				find(char *str, char *to_find);
+int				ft_strncmp(const char *s1, const char *s2, size_t n);
 
 #endif

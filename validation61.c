@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validation61.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aremkrtc <aremkrtc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rkochary <rkochary@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 15:45:12 by aremkrtc          #+#    #+#             */
-/*   Updated: 2023/04/20 17:03:54 by aremkrtc         ###   ########.fr       */
+/*   Updated: 2023/04/26 16:00:50 by rkochary         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,8 @@ int	is_digital_str(char *str)
 
 void	free_result(char	**arr)
 {
-	if (!(!strcmp(arr[0], "NO" ) || !strcmp(arr[0], "SO") \
-	|| !strcmp(arr[0], "EA") || !strcmp(arr[0], "WE")))
+	if (!(!ft_strcmp(arr[0], "NO" ) || !ft_strcmp(arr[0], "SO") \
+	|| !ft_strcmp(arr[0], "EA") || !ft_strcmp(arr[0], "WE")))
 		free_mtx(arr);
 	else
 	{

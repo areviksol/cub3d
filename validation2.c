@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validation2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aremkrtc <aremkrtc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rkochary <rkochary@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 14:10:27 by aremkrtc          #+#    #+#             */
-/*   Updated: 2023/04/20 14:22:41 by aremkrtc         ###   ########.fr       */
+/*   Updated: 2023/04/26 16:05:14 by rkochary         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,8 @@ int	check_empty_line(char **playfield)
 	i = 0;
 	while (playfield[i])
 	{
-		if ((playfield[i] == NULL || !strcmp(playfield[i], "")) && i != len - 1)
+		if ((playfield[i] == NULL || \
+		!ft_strcmp(playfield[i], "")) && i != len - 1)
 			return (ft_perror("Error: Empty line\n"));
 		i++;
 	}

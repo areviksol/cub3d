@@ -6,7 +6,7 @@
 /*   By: rkochary <rkochary@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 15:07:13 by aremkrtc          #+#    #+#             */
-/*   Updated: 2023/04/26 15:53:32 by rkochary         ###   ########.fr       */
+/*   Updated: 2023/04/26 16:00:01 by rkochary         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	substring_appears_once(char **arr, char *sub)
 	i = 0;
 	while (i < 6)
 	{
-		if (strcmp(arr[i], sub) == 0)
+		if (ft_strcmp(arr[i], sub) == 0)
 		{
 			count++;
 			if (count > 1)
