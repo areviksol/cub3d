@@ -16,10 +16,8 @@ int	chgitem(char **texture, t_map *map)
 {
 	int		i;
 	char	**arr;
-	int		flag;
 
 	i = 0;
-	flag = 0;
 	while (i < 6)
 	{
 		arr = NULL;
@@ -27,7 +25,7 @@ int	chgitem(char **texture, t_map *map)
 		if (count_string_length(arr) != 2 && (!ft_strcmp(arr[0], "NO" ) || \
 		!ft_strcmp(arr[0], "SO") || !ft_strcmp(arr[0], "EA") \
 		|| !ft_strcmp(arr[0], "WE")))
-			flag = 1;
+			return (ft_perror("Error: split size is not 2\n"));
 		map->result[i] = ft_strdup(arr[0]);
 		map->result2[i] = ft_strdup(arr[1]);
 		chgitem2(map, i);
@@ -36,8 +34,6 @@ int	chgitem(char **texture, t_map *map)
 	}
 	map->result[i] = NULL;
 	map->result2[i] = NULL;
-	if (flag)
-		return (ft_perror("Error: split size is not 2\n"));
 	return (1);
 }
 
