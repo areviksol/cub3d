@@ -6,7 +6,7 @@
 /*   By: rkochary <rkochary@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 13:45:08 by aremkrtc          #+#    #+#             */
-/*   Updated: 2023/04/26 15:49:23 by rkochary         ###   ########.fr       */
+/*   Updated: 2023/04/27 16:40:52 by rkochary         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	main(int argc, char **argv)
 	t_map		aaa;
 
 	addres.cub = malloc(sizeof(t_cub));
-	array = getmap("map.cub");
+	array = getmap(argv[1]);
 	if (argc == 2)
 	{
 		main_h(&aaa, array, addres.cub, argv);

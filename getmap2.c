@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   getmap2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aremkrtc <aremkrtc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rkochary <rkochary@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 13:35:05 by aremkrtc          #+#    #+#             */
-/*   Updated: 2023/04/20 13:35:49 by aremkrtc         ###   ########.fr       */
+/*   Updated: 2023/04/27 16:44:22 by rkochary         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,11 @@ char	**getmap(char *filename)
 	char	**map;
 
 	fd = open(filename, O_RDONLY);
+	if (fd == -1)
+	{
+		write(2, "Error\n", 6);
+		exit(1);
+	}
 	map = NULL;
 	if (fd == -1)
 		return (NULL);
