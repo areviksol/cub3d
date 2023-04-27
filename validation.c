@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rkochary <rkochary@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aremkrtc <aremkrtc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 13:57:17 by aremkrtc          #+#    #+#             */
-/*   Updated: 2023/04/26 15:30:14 by rkochary         ###   ########.fr       */
+/*   Updated: 2023/04/27 12:54:29 by aremkrtc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,16 +53,20 @@ void	get_playfield(char **map, t_map *m)
 {
 	int	i;
 	int	j;
+	int	flag;
 
 	j = 0;
 	i = 6;
+	flag = 0;
 	m->playfield = (char **)malloc(sizeof(char *) * \
 	count_string_length(map) - 6);
 	while (map[i])
 	{
 		if (is_empty_string(map[i]))
+			flag = 1;
+		if (!is_empty_string(map[i]) && flag)
 		{
-			write(2, "Error: Empty line \n", 19);
+			write(2, "Error: Empty line\n", 18);
 			exit(1);
 		}
 		m->playfield[j] = map[i];

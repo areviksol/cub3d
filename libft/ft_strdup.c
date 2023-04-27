@@ -6,7 +6,7 @@
 /*   By: aremkrtc <aremkrtc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 13:55:08 by aremkrtc          #+#    #+#             */
-/*   Updated: 2023/04/20 13:55:10 by aremkrtc         ###   ########.fr       */
+/*   Updated: 2023/04/27 12:48:04 by aremkrtc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_strdup(const char *s1)
 	char			*ptr;
 	int				i;
 
-	size = ft_strlen2(s1);
+	size = ft_strlen(s1);
 	ptr = malloc((size + 1) * sizeof(char));
 	if (!ptr)
 		return (NULL);

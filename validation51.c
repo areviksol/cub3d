@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validation51.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rkochary <rkochary@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aremkrtc <aremkrtc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 15:07:13 by aremkrtc          #+#    #+#             */
-/*   Updated: 2023/04/26 16:00:01 by rkochary         ###   ########.fr       */
+/*   Updated: 2023/04/27 12:51:25 by aremkrtc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,10 @@ int	chgitem(char **texture, t_map *map)
 		!ft_strcmp(arr[0], "SO") || !ft_strcmp(arr[0], "EA") \
 		|| !ft_strcmp(arr[0], "WE")))
 			return (ft_perror("Error: split size is not 2\n"));
-		map->result[i] = ft_strdup(arr[0]);
-		map->result2[i] = ft_strdup(arr[1]);
+		if (arr && arr[0])
+			map->result[i] = ft_strdup(arr[0]);
+		if (arr && arr[1])
+			map->result2[i] = ft_strdup(arr[1]);
 		chgitem2(map, i);
 		free_mtx(arr);
 		i++;
